@@ -23,7 +23,6 @@
     z-index: -1;
   }
 
-  /* หน้าจอเริ่มต้น */
   #startOverlay {
     position: fixed;
     top: 0;
@@ -51,7 +50,6 @@
     cursor: pointer;
   }
 
-  /* ปุ่ม mute */
   #muteButton {
     position: fixed;
     top: 20px;
@@ -66,14 +64,13 @@
     cursor: pointer;
   }
 
-  /* เนื้อหาหลัก */
   #mainContent {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: white;
+    color: rgb(255, 255, 255);
     z-index: 1;
     position: relative;
   }
@@ -85,7 +82,6 @@
     pointer-events: none;
   }
 
-  /* เมื่อพร้อมแสดง */
   #mainContent.show {
     opacity: 1;
     transform: translateY(0);
@@ -97,7 +93,7 @@
     height: 150px;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid #ffffff;
+    border: 4px solid #f4d96e;
     margin-bottom: 20px;
     animation: rotate 8s linear infinite;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
@@ -115,24 +111,25 @@
     gap: 15px;
     margin-top: 20px;
     align-items: center;
-    /* จัดปุ่มให้อยู่ตรงกลาง */
   }
+
+  .button-container a i {
+    margin-right: 8px;
+  }
+
 
   .button-container a {
     text-decoration: none;
-    background-color: #ff4081;
+    background-color: #f7c569;
     color: white;
     padding: 18px 30px;
-    /* ขนาดปุ่มใหญ่ขึ้น */
     border-radius: 30px;
     font-size: 18px;
-    /* ตัวอักษรใหญ่ขึ้น */
     font-weight: bold;
     text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     width: 220px;
-    /* กำหนดความกว้างของปุ่ม */
   }
 
   .button-container a:hover {
@@ -143,7 +140,7 @@
   .profile-image .button-container a {
     text-decoration: none;
     background-color: #ff4081;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 12px 20px;
     border-radius: 25px;
     font-size: 16px;
@@ -153,22 +150,19 @@
   }
 
   .button-container a:hover {
-    background-color: #f50057;
+    background-color: #fd679b;
     transform: scale(1.05);
   }
 
   #cursor-glow {
-    /* ... */
     transform: translate(-50%, -50%);
   }
 
-  /* ใบไม้ */
   .leaf {
     position: fixed;
     width: 15px;
     height: 15px;
     background-image: url('leaf.png');
-    /* ใช้ภาพใบไม้เล็กๆ */
     background-size: cover;
     opacity: 0.9;
     pointer-events: none;
@@ -186,3 +180,7 @@
       opacity: 0;
     }
   }
+
+  /*.fa {
+    display: none;
+  }*/
