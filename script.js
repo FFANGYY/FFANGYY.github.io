@@ -65,3 +65,28 @@ document.addEventListener("mousemove", (e) => {
     }, 1000);
   }
 });
+
+const fullText = "@FANG";
+  let index = 0;
+  let reverse = false;
+
+  function animateTitle() {
+    if (!reverse) {
+      index++;
+      if (index > fullText.length) {
+        reverse = true;
+        index = fullText.length - 1;
+      }
+    } else {
+      index--;
+      if (index < 1) {
+        reverse = false;
+        index = 1;
+      }
+    }
+
+    document.title = fullText.substring(0, index);
+    setTimeout(animateTitle, 300); // ความเร็วในการพิมพ์/ลบ
+  }
+
+  animateTitle(); // เริ่มทำงาน
