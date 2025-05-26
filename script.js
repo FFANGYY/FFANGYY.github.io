@@ -6,31 +6,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainContent = document.getElementById('mainContent');
   let isMuted = false;
 
-  // เมื่อคลิกข้อความเริ่มต้น
-  startText.addEventListener('click', async () => {
+  // คลิกตรงไหนของ overlay ก็เริ่มได้
+  startOverlay.addEventListener('click', async () => {
     try {
       video.muted = false;
       await video.play();
     } catch (err) {
-      console.warn('Autoplay failed, trying again muted...', err);
+      console.warn('Autoplay failed, fallback to muted:', err);
       video.muted = true;
       video.play();
     }
 
-    // หลังหน้าดำ fade out ค่อยแสดงเนื้อหา
-    setTimeout(() => {
-      startOverlay.style.display = 'none';
-      mainContent.classList.add('show');
-    }, 1000);
-
     startOverlay.classList.add('fade-out');
-
     setTimeout(() => {
       startOverlay.style.display = 'none';
+      mainContent.classList.remove('hidden');
+      mainContent.classList.add('show');
     }, 1000);
   });
 
-  // ปุ่มปิดเสียง
   muteBtn.addEventListener('click', () => {
     isMuted = !isMuted;
     video.muted = isMuted;
@@ -67,26 +61,26 @@ document.addEventListener("mousemove", (e) => {
 });
 
 const fullText = "@FANG";
-  let index = 0;
-  let reverse = false;
+let index = 0;
+let reverse = false;
 
-  function animateTitle() {
-    if (!reverse) {
-      index++;
-      if (index > fullText.length) {
-        reverse = true;
-        index = fullText.length - 1;
-      }
-    } else {
-      index--;
-      if (index < 1) {
-        reverse = false;
-        index = 1;
-      }
+function animateTitle() {
+  if (!reverse) {
+    index++;
+    if (index > fullText.length) {
+      reverse = true;
+      index = fullText.length - 1;
     }
-
-    document.title = fullText.substring(0, index);
-    setTimeout(animateTitle, 300); // ความเร็วในการพิมพ์/ลบ
+  } else {
+    index--;
+    if (index < 1) {
+      reverse = false;
+      index = 1;
+    }
   }
 
-  animateTitle(); // เริ่มทำงาน
+  document.title = fullText.substring(0, index);
+  setTimeout(animateTitle, 300); // ความเร็วในการพิมพ์/ลบ
+}
+
+animateTitle(); // เริ่มทำงาน
