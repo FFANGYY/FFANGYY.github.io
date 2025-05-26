@@ -41,35 +41,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const glow = document.getElementById("cursor-glow");
 
+function createLeaf(x, y) {
+  const leaf = document.createElement("div");
+  leaf.className = "leaf";
+  leaf.style.left = x + (Math.random() * 20 - 10) + "px";
+  leaf.style.top = y + "px";
+  document.body.appendChild(leaf);
+  setTimeout(() => {
+    document.body.removeChild(leaf);
+  }, 1000);
+}
+
 document.addEventListener("mousemove", (e) => {
   glow.style.left = `${e.clientX}px`;
   glow.style.top = `${e.clientY}px`;
-
-  // ใบไม้แบบสุ่มเล็กน้อย ไม่ทับซ้อนมาก
-  if (Math.random() < 0.1) {
-    const leaf = document.createElement("div");
-    leaf.className = "leaf";
-    leaf.style.left = e.clientX + Math.random() * 20 - 10 + "px";
-    leaf.style.top = e.clientY + "px";
-    document.body.appendChild(leaf);
-
-    // ลบหลังจากตก
-    setTimeout(() => {
-      document.body.removeChild(leaf);
-    }, 1000);
-  }
+  if (Math.random() < 0.1) createLeaf(e.clientX, e.clientY);
 });
 
+document.addEventListener("touchmove", (e) => {
+  const touch = e.touches[0];
+  if (touch && Math.random() < 0.3) createLeaf(touch.clientX, touch.clientY);
+});
+
+document.addEventListener("touchstart", (e) => {
+  const touch = e.touches[0];
+  if (touch) createLeaf(touch.clientX, touch.clientY);
+});
+
+// ชื่อไตเติล @FANG แบบพิมพ์/ลบวนไป
 const fullText = "@FANG";
-let index = 0;
-let reverse = false;
+let index = 0, reverse = false;
 
 function animateTitle() {
+  document.title = fullText.substring(0, index);
   if (!reverse) {
     index++;
     if (index > fullText.length) {
       reverse = true;
-      index = fullText.length - 1;
+      index = fullText.length;
     }
   } else {
     index--;
@@ -78,9 +87,7 @@ function animateTitle() {
       index = 1;
     }
   }
-
-  document.title = fullText.substring(0, index);
-  setTimeout(animateTitle, 300); // ความเร็วในการพิมพ์/ลบ
+  setTimeout(animateTitle, 300);
 }
 
-animateTitle(); // เริ่มทำงาน
+animateTitle();
