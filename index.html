@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title id="dynamic-title">@Fang | ว่าที่ลูกแม่โจ้</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- วิดีโอพื้นหลัง (ใส่ muted autoplay playsinline เพื่อให้โหลดภาพมารอทันทีบนมือถือ) -->
+  <video id="bg-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+    <source src="background.mp4" type="video/mp4" />
+  </video>
+
+  <!-- แสงละมุนตามเมาส์ -->
+  <div id="cursor-glow"></div>
+
+  <!-- หน้าจอ Overlay ต้อนรับก่อนเข้าเว็บ -->
+  <div id="startOverlay">
+    <div class="welcome-box">
+      <div class="mju-pill">🌿 MAEJO UNIVERSITY • DEK 70 💛</div>
+      <div id="startText">@Fang | แตะเพื่อเข้าสู่หน้าโปรไฟล์ ✨</div>
+    </div>
+  </div>
+
+  <!-- ปุ่มเปิด/ปิดเสียง -->
+  <button id="muteButton" title="เปิด/ปิดเสียง">🔊</button>
+
+  <!-- กล่องเนื้อหาหลัก -->
+  <div id="mainContent">
+    <div class="aesthetic-card">
+      <!-- แถบป้ายว่าที่เฟรชชี่ด้านบน -->
+      <div class="freshy-ribbon">
+        <span>🌱 ว่าที่ลูกแม่โจ้ • เขียว-ขาว-เหลือง</span>
+      </div>
+
+      <!-- รูปโปรไฟล์พร้อมกรอบแสงสีทองนุ่มนวล -->
+      <div class="profile-wrapper">
+        <div class="glow-halo"></div>
+        <div class="profile-image">
+          <img src="fang.jpg" alt="Profile" />
+        </div>
+        <div class="badge-icon" title="Freshy MJU">🎓</div>
+      </div>
+
+      <!-- ชื่อและคำโปรย -->
+      <h1 class="profile-name">@Fang</h1>
+      <p class="profile-bio" id="typing-bio">ยินดีที่ได้รู้จักเพื่อนๆ พี่ๆ แม่โจ้ทุกคนนะคะ 🤍</p>
+
+      <!-- ปุ่มลิงก์โซเชียลสไตล์พาสเทลกระจกใส -->
+      <div class="button-container">
+        <a href="https://www.facebook.com/Nang.fxngkii" target="_blank" class="social-btn fb">
+          <span class="icon-circle"><i class="fab fa-facebook-f"></i></span>
+          <span class="btn-text">Facebook</span>
+          <i class="fas fa-heart heart-icon"></i>
+        </a>
+
+        <a href="https://www.instagram.com/yee_ratky/" target="_blank" class="social-btn ig">
+          <span class="icon-circle"><i class="fab fa-instagram"></i></span>
+          <span class="btn-text">Instagram</span>
+          <i class="fas fa-heart heart-icon"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@tau_manee" target="_blank" class="social-btn tt">
+          <span class="icon-circle"><i class="fab fa-tiktok"></i></span>
+          <span class="btn-text">TikTok</span>
+          <i class="fas fa-heart heart-icon"></i>
+        </a>
+      </div>
+
+      <!-- ข้อความเล็กๆ ด้านล่างการ์ด -->
+      <div class="card-footer">
+        <span>✨ MJU Freshy • Green White Gold ✨</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
